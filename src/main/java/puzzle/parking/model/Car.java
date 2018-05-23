@@ -10,6 +10,14 @@ public class Car {
         this.color = color;
     }
 
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
     @Override
     public String toString() {
         return String.format("%s\t%s", registrationNumber, color);

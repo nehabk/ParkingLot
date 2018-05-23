@@ -2,7 +2,10 @@ package puzzle.parking;
 
 import puzzle.parking.model.Car;
 
+import java.util.Objects;
+
 import static java.lang.String.format;
+import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 public class ParkingLot {
@@ -51,6 +54,10 @@ public class ParkingLot {
     }
 
     public String[] getRegistrationNumbersForColor(String color) {
-        return new String[0];
+        return stream(cars)
+                .filter(Objects::nonNull)
+                .filter(car -> color.equals(car.getColor()))
+                .map(Car::getRegistrationNumber)
+                .toArray(String[]::new);
     }
 }

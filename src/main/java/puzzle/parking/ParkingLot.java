@@ -2,6 +2,7 @@ package puzzle.parking;
 
 import puzzle.parking.model.Car;
 
+import static java.lang.String.format;
 import static java.util.stream.IntStream.range;
 
 public class ParkingLot {
@@ -37,4 +38,16 @@ public class ParkingLot {
         cars[slotToVacate - 1] = null;
         return true;
     }
+
+    public String getStatus() {
+        StringBuilder parkingLotStatus = new StringBuilder();
+        parkingLotStatus.append("Slot No.\tRegistration No\tColor");
+
+        range(1, totalNumberOfSpaces)
+                .filter(i -> cars[i - 1] != null)
+                .forEach(i -> parkingLotStatus.append(format("\n%s\t%s", i, cars[i - 1])));
+
+        return parkingLotStatus.toString();
+    }
+
 }

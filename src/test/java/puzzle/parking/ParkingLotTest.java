@@ -39,4 +39,16 @@ public class ParkingLotTest {
         assertThat(parkingLot.leave(5), is(false));
     }
 
+    @Test
+    public void should_return_status_string() {
+        String expectedStatus = "Slot No.\tRegistration No\tColor" +
+                "\n1\tKA-01-HH-1234\tWhite" +
+                "\n2\tKA-01-HH-7777\tRed";
+        ParkingLot parkingLot = new ParkingLot(4);
+        parkingLot.park(new Car("KA-01-HH-1234", "White"));
+        parkingLot.park(new Car("KA-01-HH-7777", "Red"));
+
+        assertThat(parkingLot.getStatus(), is(expectedStatus));
+    }
+
 }

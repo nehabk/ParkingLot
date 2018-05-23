@@ -64,4 +64,18 @@ public class ParkingLotTest {
         assertThat(registrationNumbers[0], is("KA-01-HH-1234"));
     }
 
+    @Test
+    public void should_return_slot_numbers_for_cars_with_given_color() {
+        ParkingLot parkingLot = new ParkingLot(4);
+        parkingLot.park(new Car("KA-01-HH-1234", "White"));
+        parkingLot.park(new Car("KA-01-HH-9999", "White"));
+        parkingLot.park(new Car("KA-01-HH-7777", "Red"));
+
+        int[] slotNumbers = parkingLot.getSlotNumbersForColor("White");
+
+        assertThat(slotNumbers.length, is(2));
+        assertThat(slotNumbers[0], is(1));
+        assertThat(slotNumbers[1], is(2));
+    }
+
 }

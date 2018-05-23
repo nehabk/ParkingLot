@@ -60,4 +60,8 @@ public class ParkingLot {
                 .map(Car::getRegistrationNumber)
                 .toArray(String[]::new);
     }
+
+    public int[] getSlotNumbersForColor(String color) {
+        return new int[0];
+    }
 }

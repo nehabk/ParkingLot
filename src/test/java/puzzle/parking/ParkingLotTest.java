@@ -26,4 +26,15 @@ public class ParkingLotTest {
         assertThat(slotNumberForSecondCar, is(2));
     }
 
+    @Test
+    public void should_vacate_slot_when_a_car_leaves() {
+
+        ParkingLot parkingLot = new ParkingLot(4);
+        parkingLot.park(new Car("ABC", "White"));
+        parkingLot.park(new Car("ABC", "White"));
+        parkingLot.park(new Car("ABC", "White"));
+
+        assertThat(parkingLot.leave(3), is(true));
+    }
+
 }

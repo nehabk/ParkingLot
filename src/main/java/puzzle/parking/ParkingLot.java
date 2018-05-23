@@ -29,4 +29,8 @@ public class ParkingLot {
 
         return slot;
     }
+
+    public Boolean leave(Integer slotToVacate) {
+        return null;
+    }
 }

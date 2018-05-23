@@ -50,4 +50,7 @@ public class ParkingLot {
         return parkingLotStatus.toString();
     }
 
+    public String[] getRegistrationNumbersForColor(String color) {
+        return new String[0];
+    }
 }

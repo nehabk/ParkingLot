@@ -51,4 +51,17 @@ public class ParkingLotTest {
         assertThat(parkingLot.getStatus(), is(expectedStatus));
     }
 
+    @Test
+    public void should_return_registration_numbers_of_cars_with_given_color() {
+        ParkingLot parkingLot = new ParkingLot(4);
+        parkingLot.park(new Car("KA-01-HH-1234", "White"));
+        parkingLot.park(new Car("KA-01-HH-9999", "White"));
+        parkingLot.park(new Car("KA-01-HH-7777", "Red"));
+
+        String[] registrationNumbers = parkingLot.getRegistrationNumbersForColor("White");
+
+        assertThat(registrationNumbers.length, is(2));
+        assertThat(registrationNumbers[0], is("KA-01-HH-1234"));
+    }
+
 }

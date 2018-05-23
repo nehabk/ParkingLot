@@ -62,6 +62,9 @@ public class ParkingLot {
     }
 
     public int[] getSlotNumbersForColor(String color) {
-        return new int[0];
+        return range(1, totalNumberOfSpaces)
+                .filter(i -> cars[i-1] != null)
+                .filter(i -> color.equals(cars[i-1].getColor()))
+                .toArray();
     }
 }

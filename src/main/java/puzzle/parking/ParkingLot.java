@@ -2,11 +2,13 @@ package puzzle.parking;
 
 public class ParkingLot {
 
-    public ParkingLot(Integer numberOfParkingSpaces) {
+    private Integer totalNumberOfSpaces;
 
+    public ParkingLot(Integer numberOfParkingSpaces) {
+        this.totalNumberOfSpaces = numberOfParkingSpaces;
     }
 
     public Integer getTotalNumberOfSpaces() {
-        return null;
+        return this.totalNumberOfSpaces;
     }
 }

@@ -67,4 +67,12 @@ public class ParkingLot {
                 .filter(i -> color.equals(cars[i-1].getColor()))
                 .toArray();
     }
+
+    public Integer getSlotNumberForRegistrationNumber(String registrationNumber) {
+        return range(1, totalNumberOfSpaces)
+                .filter(i -> cars[i-1] != null)
+                .filter(i -> registrationNumber.equals(cars[i-1].getRegistrationNumber()))
+                .findFirst()
+                .orElse(-1);
+    }
 }

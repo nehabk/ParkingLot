@@ -78,4 +78,15 @@ public class ParkingLotTest {
         assertThat(slotNumbers[1], is(2));
     }
 
+    @Test
+    public void should_return_slot_number_for_given_registration_number() {
+        ParkingLot parkingLot = new ParkingLot(4);
+        parkingLot.park(new Car("KA-01-HH-1234", "White"));
+        parkingLot.park(new Car("KA-01-HH-9999", "White"));
+        parkingLot.park(new Car("KA-01-HH-7777", "Red"));
+
+        assertThat(parkingLot.getSlotNumberForRegistrationNumber("KA-01-HH-9999"), is(2));
+        assertThat(parkingLot.getSlotNumberForRegistrationNumber("1234"), is(-1));
+    }
+
 }

@@ -35,6 +35,8 @@ public class ParkingLotTest {
         parkingLot.park(new Car("ABC", "White"));
 
         assertThat(parkingLot.leave(3), is(true));
+        assertThat(parkingLot.leave(0), is(false));
+        assertThat(parkingLot.leave(5), is(false));
     }
 
 }

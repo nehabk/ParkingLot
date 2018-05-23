@@ -31,6 +31,10 @@ public class ParkingLot {
     }
 
     public Boolean leave(Integer slotToVacate) {
-        return null;
+        if (slotToVacate <= 0 || slotToVacate > totalNumberOfSpaces)
+            return false;
+
+        cars[slotToVacate - 1] = null;
+        return true;
     }
 }

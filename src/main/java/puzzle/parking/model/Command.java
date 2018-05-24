@@ -1,22 +1,25 @@
 package puzzle.parking.model;
 
+import puzzle.parking.ParkingLot;
+
+import static java.lang.String.format;
+
 public enum Command {
 
-    CREATE_PARKING_LOT("^create_parking_lot ([0-9]+)"),
+    CREATE_PARKING_LOT("^create_parking_lot ([0-9]+)") {
+        @Override
+        public void execute(String[] args) {
+            int numberOfParkingSpaces = Integer.parseInt(args[1]);
+            parkingLot = new ParkingLot(numberOfParkingSpaces);
 
-    PARK("^park (.*) (.*)"),
+            System.out.println(format("Created a parking lot with %s slots", numberOfParkingSpaces));
+        }
+    };
 
-    LEAVE("^leave ([0-9]+)"),
-
-    STATUS("^status"),
-
-    REGISTRATION_NUMBERS_FOR_CARS_WITH_COLOR("^registration_numbers_for_cars_with_colour (.*)"),
-
-    SLOT_NUMBERS_FOR_CARS_WITH_COLOR("^rslot_numbers_for_cars_with_colour (.*)"),
-
-    SLOT_NUMBER_FOR_REGISTRATION_NUMBER("^slot_number_for_registration_number (.*)");
+    public abstract void execute(String[] args);
 
     String pattern;
+    static ParkingLot parkingLot;
 
     Command(String pattern) {
         this.pattern = pattern;

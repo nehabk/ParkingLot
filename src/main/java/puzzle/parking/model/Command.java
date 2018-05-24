@@ -72,7 +72,14 @@ public enum Command {
     SLOT_NUMBER_FOR_REGISTRATION_NUMBER("^slot_number_for_registration_number (.*)") {
         public void execute(String[] args) {
             String registrationNumber = args[1];
-            System.out.println(parkingLot.getSlotNumberForRegistrationNumber(registrationNumber));
+            Integer slotNumber = parkingLot.getSlotNumberForRegistrationNumber(registrationNumber);
+
+            if (slotNumber != -1) {
+                System.out.println(slotNumber);
+            } else {
+                System.out.println("Not found");
+            }
+            
         }
     };
 

@@ -23,7 +23,7 @@ public class ParkingLot {
     }
 
     public Integer park(Car car) {
-        Integer slot = range(1, totalNumberOfSpaces)
+        Integer slot = range(1, totalNumberOfSpaces+1)
                 .filter(i -> cars[i - 1] == null)
                 .findFirst()
                 .orElse(-1);
@@ -46,7 +46,7 @@ public class ParkingLot {
         StringBuilder parkingLotStatus = new StringBuilder();
         parkingLotStatus.append("Slot No.\tRegistration No\tColor");
 
-        range(1, totalNumberOfSpaces)
+        range(1, totalNumberOfSpaces+1)
                 .filter(i -> cars[i - 1] != null)
                 .forEach(i -> parkingLotStatus.append(format("\n%s\t%s", i, cars[i - 1])));
 
@@ -62,14 +62,14 @@ public class ParkingLot {
     }
 
     public int[] getSlotNumbersForColor(String color) {
-        return range(1, totalNumberOfSpaces)
+        return range(1, totalNumberOfSpaces+1)
                 .filter(i -> cars[i - 1] != null)
                 .filter(i -> color.equals(cars[i - 1].getColor()))
                 .toArray();
     }
 
     public Integer getSlotNumberForRegistrationNumber(String registrationNumber) {
-        return range(1, totalNumberOfSpaces)
+        return range(1, totalNumberOfSpaces+1)
                 .filter(i -> cars[i - 1] != null)
                 .filter(i -> registrationNumber.equals(cars[i - 1].getRegistrationNumber()))
                 .findFirst()
